@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://3ltqbe5v6rob"]
+
+[ext_resource type="Script" path="res://UI/map_ui.gd" id="1_a23hh"]
+[ext_resource type="Texture2D" uid="uid://cf3il2vy15l7l" path="res://Assets/map.jpg" id="1_c257p"]
+[ext_resource type="Script" path="res://UI/map_camera.gd" id="2_gr8da"]
+[ext_resource type="PackedScene" uid="uid://nwvbwvq4tjct" path="res://UI/map_zone.tscn" id="3_nxok7"]
+[ext_resource type="AudioStream" uid="uid://ong1qvwthwb2" path="res://Assets/yes.mp3" id="5_5bl4b"]
+[ext_resource type="AudioStream" uid="uid://yk4vp27q13xj" path="res://Assets/no.mp3" id="6_5al0l"]
+[ext_resource type="AudioStream" uid="uid://n0xbsu2mhcmr" path="res://Assets/music3.mp3" id="7_cp4r4"]
+
+[sub_resource type="Gradient" id="Gradient_hth37"]
+offsets = PackedFloat32Array(0.459016, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8l2g0"]
+gradient = SubResource("Gradient_hth37")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.1)
+
+[node name="MapUI" type="Node2D"]
+script = ExtResource("1_a23hh")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("1_c257p")
+
+[node name="Map" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1)
+texture = ExtResource("1_c257p")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+blend_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+script = ExtResource("2_gr8da")
+max_zoom = Vector2(2, 2)
+
+[node name="PointLight2D" type="PointLight2D" parent="Camera2D"]
+texture = SubResource("GradientTexture2D_8l2g0")
+texture_scale = 3.0
+
+[node name="Zones" type="Node2D" parent="."]
+
+[node name="LockedZone" parent="Zones" instance=ExtResource("3_nxok7")]
+position = Vector2(504, -412)
+zone_name = "Dorobanți"
+
+[node name="LockedZone2" parent="Zones" instance=ExtResource("3_nxok7")]
+position = Vector2(-479, -477)
+zone_name = "Dust II"
+
+[node name="LockedZone3" parent="Zones" instance=ExtResource("3_nxok7")]
+position = Vector2(41, -575)
+zone_name = "KFC"
+
+[node name="UnlockedZone" parent="Zones" instance=ExtResource("3_nxok7")]
+position = Vector2(466, -71)
+zone_name = "Tabăra Inamică"
+scene = "res://world.tscn"
+locked = false
+texture_path = "res://Assets/attack.png"
+
+[node name="UnlockedZone2" parent="Zones" instance=ExtResource("3_nxok7")]
+position = Vector2(-290, 133)
+zone_name = "Baza Dacilor"
+scene = "res://base.tscn"
+locked = false
+texture_path = "res://Assets/home.png"
+
+[node name="YesSoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5bl4b")
+
+[node name="NoSoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_5al0l")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_cp4r4")
+autoplay = true

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dteg20fxtdtgg"]
+
+[ext_resource type="PackedScene" uid="uid://cot6cj22w3w7o" path="res://troop.tscn" id="1_513mr"]
+[ext_resource type="PackedScene" uid="uid://6aygwvb8mtoq" path="res://Assets/Barbarian.glb" id="2_rlg07"]
+
+[node name="Troop" instance=ExtResource("1_513mr")]
+
+[node name="Model" parent="." index="0" instance=ExtResource("2_rlg07")]

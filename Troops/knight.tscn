@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjpe2bsrje4jr"]
+
+[ext_resource type="PackedScene" uid="uid://cot6cj22w3w7o" path="res://troop.tscn" id="1_0myu7"]
+[ext_resource type="PackedScene" uid="uid://dcjp0h3dcjarn" path="res://Assets/Knight.glb" id="2_2g1ob"]
+
+[node name="Troop" instance=ExtResource("1_0myu7")]
+tribe = "Romans"
+
+[node name="Knight" parent="." index="0" instance=ExtResource("2_2g1ob")]
+
+[node name="NavigationAgent3D" parent="." index="8"]
+path_desired_distance = 16.0
+path_max_distance = 16.01

@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://disu4eq6m5gql"]
+
+[ext_resource type="FontFile" uid="uid://cql4nuxyibnhl" path="res://Assets/New folder/MedievalSharp-Regular.ttf" id="1_udt3n"]
+[ext_resource type="Script" path="res://UI/battle_ui.gd" id="1_xqkdj"]
+[ext_resource type="Texture2D" uid="uid://dmnggifp6xing" path="res://Assets/star.png" id="3_53ex2"]
+
+[node name="BattleUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xqkdj")
+
+[node name="ToopsRemaining" type="ProgressBar" parent="."]
+modulate = Color(0, 0.909804, 1, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = -65.0
+offset_right = 384.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("1_udt3n")
+theme_override_font_sizes/font_size = 26
+value = 100.0
+
+[node name="EnemiesRemaining" type="ProgressBar" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -448.0
+offset_top = -65.0
+offset_right = -192.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("1_udt3n")
+theme_override_font_sizes/font_size = 26
+value = 100.0
+
+[node name="StartBattleButton" type="Button" parent="."]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -70.0
+offset_right = 64.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = ExtResource("1_udt3n")
+theme_override_font_sizes/font_size = 32
+text = "Atacă"
+
+[node name="BattleWonContainer" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -418.0
+offset_right = 905.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+
+[node name="TextureRect" type="TextureRect" parent="BattleWonContainer"]
+layout_mode = 2
+texture = ExtResource("3_53ex2")
+
+[node name="TextureRect2" type="TextureRect" parent="BattleWonContainer"]
+layout_mode = 2
+texture = ExtResource("3_53ex2")
+
+[node name="TextureRect3" type="TextureRect" parent="BattleWonContainer"]
+layout_mode = 2
+texture = ExtResource("3_53ex2")
+
+[connection signal="pressed" from="StartBattleButton" to="." method="_on_start_battle_button_pressed"]

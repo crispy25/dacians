@@ -1,0 +1,117 @@
+[gd_scene load_steps=14 format=3 uid="uid://c3voo4xmkep5r"]
+
+[ext_resource type="FontFile" uid="uid://cql4nuxyibnhl" path="res://Assets/New folder/MedievalSharp-Regular.ttf" id="1_3ecr4"]
+[ext_resource type="Script" path="res://UI/building_ui.gd" id="1_kddkk"]
+[ext_resource type="PackedScene" uid="uid://dr6h1wnn40iq5" path="res://Buildings/Barrack.tscn" id="2_bx0iw"]
+[ext_resource type="PackedScene" uid="uid://by58gbetanff3" path="res://Buildings/ArcherRangeBuilding.tscn" id="3_decbg"]
+[ext_resource type="PackedScene" uid="uid://be6y8vlt4p3vd" path="res://Buildings/Windmill.tscn" id="5_ayevq"]
+[ext_resource type="Texture2D" uid="uid://lpw2knxpxyim" path="res://Assets/range.png" id="5_dhq6n"]
+[ext_resource type="Texture2D" uid="uid://b3t26mrqcbxp7" path="res://Assets/windmill.png" id="6_0jw7s"]
+[ext_resource type="PackedScene" uid="uid://dc1fmw0863q02" path="res://Buildings/Tavern.tscn" id="6_pgrli"]
+[ext_resource type="PackedScene" uid="uid://b1dm5bv2b4sjp" path="res://UI/change_scene_ui.tscn" id="7_x7t05"]
+[ext_resource type="Texture2D" uid="uid://yik3b3qksf4j" path="res://Assets/tavern.png" id="8_j5oxe"]
+[ext_resource type="PackedScene" uid="uid://b23e7aetxkhvh" path="res://UI/place_building_button.tscn" id="9_adqmp"]
+[ext_resource type="PackedScene" uid="uid://3ltqbe5v6rob" path="res://UI/map_ui.tscn" id="9_b50ml"]
+
+[sub_resource type="Theme" id="Theme_hwuef"]
+default_font = ExtResource("1_3ecr4")
+
+[node name="BuildingUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kddkk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.231934
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.278431, 0.278431, 0.278431, 0.745098)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_right = 1.0
+anchor_bottom = 0.07
+offset_left = 0.280029
+offset_top = 21.4
+offset_bottom = 13.8
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_hwuef")
+theme_override_font_sizes/font_size = 56
+text = "Selecteaza o clădire:"
+horizontal_alignment = 1
+
+[node name="BuildingGrid" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.723
+anchor_top = 0.093
+anchor_right = 0.99
+anchor_bottom = 1.0
+offset_left = 31.84
+offset_top = 29.56
+offset_right = 0.199951
+grow_vertical = 2
+theme = SubResource("Theme_hwuef")
+theme_override_constants/v_separation = 28
+
+[node name="PlaceBuildingButton" parent="BuildingGrid" instance=ExtResource("9_adqmp")]
+layout_mode = 2
+theme = SubResource("Theme_hwuef")
+building_scene = ExtResource("2_bx0iw")
+building_name = "Baracă"
+resources_required = "-10 Piatră"
+
+[node name="PlaceBuildingButton2" parent="BuildingGrid" instance=ExtResource("9_adqmp")]
+layout_mode = 2
+theme = SubResource("Theme_hwuef")
+texture_normal = ExtResource("5_dhq6n")
+building_scene = ExtResource("3_decbg")
+building_name = "Casă arcași"
+resources_required = "-15 Lemn"
+
+[node name="PlaceBuildingButton3" parent="BuildingGrid" instance=ExtResource("9_adqmp")]
+layout_mode = 2
+theme = SubResource("Theme_hwuef")
+texture_normal = ExtResource("6_0jw7s")
+building_scene = ExtResource("5_ayevq")
+building_name = "Fermă"
+resources_required = "-10 Grâu"
+
+[node name="PlaceBuildingButton4" parent="BuildingGrid" instance=ExtResource("9_adqmp")]
+layout_mode = 2
+theme = SubResource("Theme_hwuef")
+texture_normal = ExtResource("8_j5oxe")
+building_scene = ExtResource("6_pgrli")
+building_name = "Berăria D"
+resources_required = "-30 Bere"
+
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -60.0
+offset_right = 140.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_3ecr4")
+theme_override_font_sizes/font_size = 32
+text = "Hartă"
+
+[node name="ChangeSceneUI" parent="." instance=ExtResource("7_x7t05")]
+layout_mode = 1
+next_scene = ExtResource("9_b50ml")
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

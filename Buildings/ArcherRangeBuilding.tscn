@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://by58gbetanff3"]
+
+[ext_resource type="PackedScene" uid="uid://bvvh461pyv6mi" path="res://building.tscn" id="1_1tep6"]
+[ext_resource type="PackedScene" uid="uid://bupmr264fu18t" path="res://Assets/Buildings/blue/building_archeryrange_blue.gltf" id="2_h5xo6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2sdri"]
+radius = 0.9
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_37tvj"]
+radius = 1.0
+
+[node name="Building" instance=ExtResource("1_1tep6")]
+
+[node name="building_archeryrange_blue2" parent="." index="0" instance=ExtResource("2_h5xo6")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_2sdri")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BuildingArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_37tvj")
