@@ -1,22 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://dr6h1wnn40iq5"]
+[gd_scene load_steps=4 format=3 uid="uid://dr6h1wnn40iq5"]
 
-[ext_resource type="PackedScene" uid="uid://bvvh461pyv6mi" path="res://building.tscn" id="1_dtsm5"]
+[ext_resource type="PackedScene" uid="uid://bvvh461pyv6mi" path="res://ABC/building.tscn" id="1_dtsm5"]
 [ext_resource type="PackedScene" uid="uid://cj5dp7afpuh0t" path="res://Assets/Buildings/blue/building_barracks_blue.gltf" id="2_yj02y"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tinpr"]
 radius = 1.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_15ngn"]
-radius = 1.0
-
 [node name="Building" instance=ExtResource("1_dtsm5")]
+resources_required = {
+"iron": 40,
+"stone": 50
+}
+path_scene = "res://Buildings/Barrack.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_tinpr")
 
 [node name="building_barracks_blue2" parent="." index="1" instance=ExtResource("2_yj02y")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BuildingArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("SphereShape3D_15ngn")

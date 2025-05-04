@@ -1,0 +1,152 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpc1idpch0y1q"]
+
+[ext_resource type="Script" path="res://UI/resources_ui.gd" id="1_8qhyl"]
+[ext_resource type="FontFile" uid="uid://cql4nuxyibnhl" path="res://Assets/New folder/MedievalSharp-Regular.ttf" id="1_csf3q"]
+[ext_resource type="Texture2D" uid="uid://c64cuxrks728d" path="res://Assets/stones.png" id="1_kum1k"]
+[ext_resource type="Texture2D" uid="uid://lsn4duv1lace" path="res://Assets/logs.png" id="3_aq2kg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mn8p7"]
+atlas = ExtResource("1_kum1k")
+region = Rect2(520, 780, 250, 230)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5ryy"]
+atlas = ExtResource("1_kum1k")
+region = Rect2(256, 1024, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xk42"]
+atlas = ExtResource("1_kum1k")
+region = Rect2(520, 520, 256, 256)
+
+[node name="ResourcesUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8qhyl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+offset_right = 509.0
+offset_bottom = 376.0
+color = Color(0.141176, 0.141176, 0.141176, 0.784314)
+
+[node name="ProgressBars" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 78.0
+offset_top = 42.0
+offset_right = 478.0
+offset_bottom = 340.0
+theme_override_constants/separation = 46
+alignment = 1
+
+[node name="GoldProgressBar" type="ProgressBar" parent="ProgressBars"]
+self_modulate = Color(0.973626, 0.973626, 6.16074e-06, 1)
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_csf3q")
+theme_override_font_sizes/font_size = 35
+show_percentage = false
+
+[node name="GoldTexture" type="TextureRect" parent="ProgressBars/GoldProgressBar"]
+layout_mode = 2
+offset_left = -80.0
+offset_top = -35.0
+offset_right = 170.0
+offset_bottom = 195.0
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_mn8p7")
+
+[node name="QuantityLabel" type="Label" parent="ProgressBars/GoldProgressBar"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 2.0
+offset_right = 398.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("1_csf3q")
+theme_override_font_sizes/font_size = 35
+text = "0"
+horizontal_alignment = 1
+
+[node name="IronProgressBar" type="ProgressBar" parent="ProgressBars"]
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_csf3q")
+theme_override_font_sizes/font_size = 35
+show_percentage = false
+
+[node name="IronTexture" type="TextureRect" parent="ProgressBars/IronProgressBar"]
+layout_mode = 2
+offset_left = -76.0
+offset_top = -42.0
+offset_right = 180.0
+offset_bottom = 214.0
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_i5ryy")
+
+[node name="QuantityLabel" type="Label" parent="ProgressBars/IronProgressBar"]
+offset_left = 11.0
+offset_top = 2.0
+offset_right = 398.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("1_csf3q")
+theme_override_font_sizes/font_size = 35
+text = "0"
+horizontal_alignment = 1
+
+[node name="StoneProgressBar" type="ProgressBar" parent="ProgressBars"]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_csf3q")
+theme_override_font_sizes/font_size = 35
+show_percentage = false
+
+[node name="StoneTexture" type="TextureRect" parent="ProgressBars/StoneProgressBar"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+offset_left = -80.0
+offset_top = -34.0
+offset_right = 176.0
+offset_bottom = 222.0
+scale = Vector2(0.4, 0.4)
+texture = SubResource("AtlasTexture_7xk42")
+
+[node name="QuantityLabel" type="Label" parent="ProgressBars/StoneProgressBar"]
+offset_left = 11.0
+offset_top = 2.0
+offset_right = 398.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("1_csf3q")
+theme_override_font_sizes/font_size = 35
+text = "0"
+horizontal_alignment = 1
+
+[node name="WoodProgressBar" type="ProgressBar" parent="ProgressBars"]
+self_modulate = Color(0.536245, 0.18288, 2.79158e-06, 1)
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_csf3q")
+theme_override_font_sizes/font_size = 35
+show_percentage = false
+
+[node name="WoodTexture" type="TextureRect" parent="ProgressBars/WoodProgressBar"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+offset_left = -80.0
+offset_top = -39.0
+offset_right = 420.0
+offset_bottom = 461.0
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("3_aq2kg")
+
+[node name="QuantityLabel" type="Label" parent="ProgressBars/WoodProgressBar"]
+offset_left = 11.0
+offset_top = 2.0
+offset_right = 398.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("1_csf3q")
+theme_override_font_sizes/font_size = 35
+text = "0"
+horizontal_alignment = 1

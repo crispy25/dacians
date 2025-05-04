@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvvh461pyv6mi"]
+
+[ext_resource type="Script" path="res://ABC/building.gd" id="1_ut4i7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pg5c7"]
+radius = 1.0
+
+[node name="Building" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_ut4i7")
+building_area = Rect2(-50, -200, 150, 300)
+
+[node name="BuildingArea" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BuildingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_pg5c7")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(1, 0.564706, 0, 1)
+light_energy = 10.0
+light_bake_mode = 1
+omni_range = 64.0

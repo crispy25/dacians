@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://cot6cj22w3w7o"]
+
+[ext_resource type="Script" path="res://ABC/troop.gd" id="1_snh8k"]
+[ext_resource type="AudioStream" uid="uid://8pqi2avlva7d" path="res://Assets/sword_effect.mp3" id="2_onw5i"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xpxan"]
+margin = 1.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_4rqxt"]
+size = Vector3(0.4, 0.4, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbom5"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_s3m7t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SelectionIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mqi8k"]
+resource_name = "selected"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SelectionIcon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 3, 0), Vector3(0, 2.8, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_etcnp"]
+_data = {
+"RESET": SubResource("Animation_s3m7t"),
+"selected": SubResource("Animation_mqi8k")
+}
+
+[node name="Troop" type="CharacterBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_snh8k")
+detection_range = 900
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.984036, 0)
+shape = SubResource("SphereShape3D_xpxan")
+
+[node name="SelectionIcon" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, -1.52855e-14, -1.74846e-07, 0, -1, 8.74228e-08, -1.74846e-07, -8.74228e-08, -1, 0, 3, 0)
+visible = false
+mesh = SubResource("PrismMesh_4rqxt")
+surface_material_override/0 = SubResource("StandardMaterial3D_jbom5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_etcnp")
+}
+
+[node name="EnemyDetectionTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="QueueFreeTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_onw5i")
+volume_db = 10.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 10.0
+path_max_distance = 10.01
+simplify_epsilon = 1.0
+avoidance_enabled = true
+height = 2.0
+radius = 1.0
+
+[connection signal="timeout" from="EnemyDetectionTimer" to="." method="_on_enemy_detection_timer_timeout"]
+[connection signal="timeout" from="QueueFreeTimer" to="." method="_on_queue_free_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

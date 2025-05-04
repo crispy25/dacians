@@ -1,6 +1,6 @@
 extends Troop
 
-@onready var arrow_scene = preload("res://arrow.tscn")
+@onready var arrow_scene = preload("res://Projectiles/arrow.tscn")
 
 
 func idle():

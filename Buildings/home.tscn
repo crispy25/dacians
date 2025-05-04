@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://drdqtps48q2e8"]
+
+[ext_resource type="PackedScene" uid="uid://bvvh461pyv6mi" path="res://ABC/building.tscn" id="1_ghrf5"]
+[ext_resource type="PackedScene" uid="uid://cpr3bw5styk7i" path="res://Assets/Buildings/blue/building_home_A_blue.gltf" id="2_ekin6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7b1s5"]
+radius = 0.9
+
+[node name="Home" instance=ExtResource("1_ghrf5")]
+path_scene = "res://Buildings/home.tscn"
+
+[node name="building_home_A_blue2" parent="." index="1" instance=ExtResource("2_ekin6")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_7b1s5")

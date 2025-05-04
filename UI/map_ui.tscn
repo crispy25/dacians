@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://3ltqbe5v6rob"]
+[gd_scene load_steps=11 format=3 uid="uid://3ltqbe5v6rob"]
 
 [ext_resource type="Script" path="res://UI/map_ui.gd" id="1_a23hh"]
 [ext_resource type="Texture2D" uid="uid://cf3il2vy15l7l" path="res://Assets/map.jpg" id="1_c257p"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://ong1qvwthwb2" path="res://Assets/yes.mp3" id="5_5bl4b"]
 [ext_resource type="AudioStream" uid="uid://yk4vp27q13xj" path="res://Assets/no.mp3" id="6_5al0l"]
 [ext_resource type="AudioStream" uid="uid://n0xbsu2mhcmr" path="res://Assets/music3.mp3" id="7_cp4r4"]
+[ext_resource type="PackedScene" uid="uid://cg6lkimmajnaj" path="res://UI/tutorial_ui.tscn" id="8_ub2b2"]
 
 [sub_resource type="Gradient" id="Gradient_hth37"]
 offsets = PackedFloat32Array(0.459016, 1)
@@ -44,33 +45,33 @@ max_zoom = Vector2(2, 2)
 texture = SubResource("GradientTexture2D_8l2g0")
 texture_scale = 3.0
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="TutorialUI" parent="Camera2D/CanvasLayer" instance=ExtResource("8_ub2b2")]
+mouse_filter = 2
+
 [node name="Zones" type="Node2D" parent="."]
 
 [node name="LockedZone" parent="Zones" instance=ExtResource("3_nxok7")]
-position = Vector2(504, -412)
-zone_name = "Dorobanți"
-
-[node name="LockedZone2" parent="Zones" instance=ExtResource("3_nxok7")]
-position = Vector2(-479, -477)
-zone_name = "Dust II"
+position = Vector2(141, -467)
+zone_name = "Res pretiosas"
 
 [node name="LockedZone3" parent="Zones" instance=ExtResource("3_nxok7")]
-position = Vector2(41, -575)
-zone_name = "KFC"
+position = Vector2(-188, -301)
+zone_name = "Prosperitas"
 
 [node name="UnlockedZone" parent="Zones" instance=ExtResource("3_nxok7")]
-position = Vector2(466, -71)
-zone_name = "Tabăra Inamică"
-scene = "res://world.tscn"
+position = Vector2(364, -44)
+zone_name = "Martius"
+scene = "res://Levels/world.tscn"
 locked = false
 texture_path = "res://Assets/attack.png"
 
 [node name="UnlockedZone2" parent="Zones" instance=ExtResource("3_nxok7")]
 position = Vector2(-290, 133)
-zone_name = "Baza Dacilor"
-scene = "res://base.tscn"
+zone_name = "Das Kapital"
+scene = "res://Levels/base.tscn"
 locked = false
-texture_path = "res://Assets/home.png"
 
 [node name="YesSoundEffect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_5bl4b")

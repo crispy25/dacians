@@ -12,7 +12,9 @@ func _input(event: InputEvent) -> void:
 		if not selected_zone.locked:
 			$YesSoundEffect.play(2)
 			var next_scene = selected_zone.scene
-	
+
+			$Camera2D/CanvasLayer/TutorialUI.hide()
+
 			var tween = get_tree().create_tween()
 			tween.tween_property($Camera2D, "position", selected_zone.position, 0.8)
 			tween.tween_property($Camera2D, "zoom", Vector2(30, 30), 1.5)

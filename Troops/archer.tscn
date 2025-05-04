@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://db6bjddwqifdb"]
 
-[ext_resource type="PackedScene" uid="uid://cot6cj22w3w7o" path="res://troop.tscn" id="1_kl0be"]
+[ext_resource type="PackedScene" uid="uid://cot6cj22w3w7o" path="res://ABC/troop.tscn" id="1_kl0be"]
 [ext_resource type="PackedScene" uid="uid://i0e52qh70b2b" path="res://Assets/Rogue_Hooded.glb" id="2_6katd"]
 [ext_resource type="Script" path="res://Troops/ranged_troop.gd" id="2_u1wjp"]
 

@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg6lkimmajnaj"]
+
+[ext_resource type="Texture2D" uid="uid://dwbn6re5v8l3t" path="res://Assets/decebal.png" id="1_v3mne"]
+[ext_resource type="FontFile" uid="uid://cql4nuxyibnhl" path="res://Assets/New folder/MedievalSharp-Regular.ttf" id="2_8vnaq"]
+
+[node name="TutorialUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.783
+anchor_right = 0.115
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 0.359924
+offset_right = -0.800003
+offset_bottom = 1.0
+color = Color(0.184314, 0.184314, 0.184314, 0.54902)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.133
+anchor_top = 0.889
+anchor_right = 0.906
+anchor_bottom = 0.976
+offset_left = -0.360001
+offset_top = -0.120056
+offset_right = 0.47998
+offset_bottom = -0.0800781
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.184314, 0.184314, 0.184314, 0.784314)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.006
+anchor_top = 0.794
+anchor_right = 0.109
+anchor_bottom = 0.993
+offset_left = 0.48
+offset_top = 0.47998
+offset_right = 0.719986
+offset_bottom = -0.440063
+grow_vertical = 0
+texture = ExtResource("1_v3mne")
+expand_mode = 1
+
+[node name="Tip" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.141
+anchor_top = 0.911
+anchor_right = 0.899
+anchor_bottom = 0.954
+offset_left = -0.720001
+offset_top = 0.119934
+offset_right = -0.0800781
+offset_bottom = -0.320068
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_8vnaq")
+theme_override_font_sizes/font_size = 40
+text = "Trebuie să înfrângem romanii din Martius pentru a putea ajunge la Das Kapital. "
